@@ -1,17 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+/*import homeLogo from '../../assets/home.png'*/
 import './Home.css';
 
-function Home(){
-    const [loggedIn, setLoggedIn] = useState(false);
-   
+
+function Home() {
     return (
-      <div>
-      {loggedIn ? (
-        <h1>Bem-vindo de volta!</h1>
-      ) : (
-        <button onClick={() => setLoggedIn(true)}>Entrar</button>
-      )}
-    </div>
+        <>
+        <div className="bg-indigo-900 flex justify-center">
+          <div className='container grid grid-cols-2 text-white'>
+            <div className="flex flex-col gap-4 items-center justify-center py-4">
+              <h2 className='text-5xl font-bold'>Seja bem vinde!</h2>
+              <p className='text-xl'>Expresse aqui seus pensamentos e opniões</p>
+  
+              <div className="flex justify-around gap-4">
+              
+                <button className='rounded bg-white text-blue-800 py-2 px-4'>Ver postagens</button>
+              </div>
+            </div>
+  
+            <div className="flex justify-center ">
+              
+      
+            </div>
+          </div>
+        </div>
+      
+      </>
     );
 }
 
