@@ -13,6 +13,7 @@ function CategoryForm() {
   let navigate = useNavigate();
 
   const { id } = useParams<{ id: string }>();
+  const { name } = useParams<{name: string}>();
 
   const { user, handleLogout } = useContext(AuthContext);
   const token = user.token;
@@ -31,7 +32,22 @@ function CategoryForm() {
     }
   }, [id])
 
-  function updateEstate(e: ChangeEvent<HTMLInputElement>) {
+  async function findByName(name: string) {
+    await find(`/categories/name/${name}}`, setCategory, {
+      headers: {
+        Authorization: token,
+      },
+    });
+  }
+
+  useEffect(() => {
+    if (name !== undefined) {
+    findByName(name)
+    }
+  }, [name])
+
+
+  function updateState(e: ChangeEvent<HTMLInputElement>) {
     setCategory({
       ...category,
       [e.target.name]: e.target.value
@@ -46,13 +62,14 @@ function CategoryForm() {
     if (id !== undefined) {
       try {
         await update(`/categories`, category, setCategory, {
-          headers: {
-            'Authorization': token
-          }
-        })
+           headers: {
+             'Authorization': token
+           }
+        }
+      )
 
         alert('Category updated successfully')
-        hollBack()
+        goBack()
 
       } catch (error: any) {
         if (error.toString().includes('403')) {
@@ -66,11 +83,13 @@ function CategoryForm() {
 
     } else {
       try {
-        await register(`/categories`, category, setCategory, {
-          headers: {
-            'Authorization': token
-          }
-        })
+        await register(`/categories`, category , setCategory
+           , {
+           headers: {
+             'Authorization': token
+       }
+         }
+      )
 
         alert('Theme registered successfully')
 
@@ -84,10 +103,10 @@ function CategoryForm() {
       }
     }
 
-    hollBack()
+    goBack()
   }
 
-  function hollBack() {
+  function goBack() {
     navigate("/categories")
   }
 
@@ -101,7 +120,7 @@ function CategoryForm() {
   return (
     <div className="container flex flex-col items-center justify-center mx-auto">
       <h1 className="text-4xl text-center my-8">
-        {id === undefined ? 'Register a new theme' : 'Edit category'}
+        {id === undefined ? 'Register a new category' : 'Edit category'}
       </h1>
 
       <form className="w-1/2 flex flex-col gap-4" onSubmit={generateNewCategory}>
@@ -113,7 +132,7 @@ function CategoryForm() {
             name='description'
             className="border-2 border-slate-700 rounded p-2"
             value={category.description}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => updateEstate(e)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => updateState(e)}
           />
         </div>
         <button

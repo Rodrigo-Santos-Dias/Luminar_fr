@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import Category from '../../../models/Categories'
 import { AuthContext } from '../../../contexts/AuthContext'
-import { find ,delet } from '../../../services/Services'
+import { find ,remove } from '../../../services/Services'
 
 
 
@@ -51,7 +51,7 @@ function DeleteCategory() {
 
     async function deleteCategory() {
         try {
-            await delet(`/category/${id}`, {
+            await remove(`/category/${id}`, {
                 headers: {
                     'Authorization': token
                 }

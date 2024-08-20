@@ -11,6 +11,12 @@ import SingUp from './pages/singUp/SingUp';
 import { AuthProvider } from './contexts/AuthContext';
 import Login from './pages/login/Login';
 import Home from './pages/home/Home';
+import ProductList from './components/product/productList/ProductList';
+import DeleteProduct from './components/product/deleteProduct/DeleteProduct';
+import ProductForm from './components/product/productForm/ProductForm';
+import Profille from './pages/profille/Profille';
+
+
 
 
 
@@ -24,12 +30,17 @@ function App() {
             <Routes>
               <Route path="/" element={<SingUp />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/singUp" element={<SingUp />} />
+              <Route path="/register" element={<SingUp />} />
               <Route path="/home" element={<Home />} />
-              <Route path="/Category" element={<ListCategories/>} />
+              <Route path="/category" element={<ListCategories/>} />
               <Route path="/registerCategory" element={<CategoryForm />} />
               <Route path="/updateCategory/:id" element={<CategoryForm />} />
               <Route path="/deleteCategory/:id" element={<DeleteCategory />} />
+              <Route path="/products" element={<ProductList />} />
+              <Route path="/deleteProduct/:id" element={<DeleteProduct/>} />
+              <Route path="/registerProduct" element={<ProductForm />} />
+              <Route path="/editProduct/:id" element={<ProductForm />} />
+              <Route path="/profille" element={<Profille/>}/>
             </Routes>
           </div>
           <Footer />
