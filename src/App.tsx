@@ -36,7 +36,7 @@ function App() {
               <Route path="/registerCategory" element={<CategoryForm />} />
               <Route path="/updateCategory/:id" element={<CategoryForm />} />
               <Route path="/deleteCategory/:id" element={<DeleteCategory />} />
-              <Route path="/products" element={<ProductList />} />
+              <Route path="/product" element={<ProductList/>} />
               <Route path="/deleteProduct/:id" element={<DeleteProduct/>} />
               <Route path="/registerProduct" element={<ProductForm />} />
               <Route path="/editProduct/:id" element={<ProductForm />} />

@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Categories from '../../../models/Categories'
+import Category from '../../../models/Categories'
 
 
 interface CardCategoryProps {
-  categories: Categories
+  categories: Category
 }
 
 function CardCategories({categories}: CardCategoryProps) {

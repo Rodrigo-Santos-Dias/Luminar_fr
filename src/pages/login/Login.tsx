@@ -42,14 +42,14 @@ function login(e: ChangeEvent<HTMLFormElement>) {
         <form className="flex justify-center items-center flex-col w-1/2 gap-4" onSubmit={login}>
           <h2 className="text-slate-900 text-5xl ">Entrar</h2>
           <div className="flex flex-col w-full">
-            <label htmlFor="user">Usuário</label>
+            <label htmlFor="email">Email</label>
             <input
               type="text"
-              id="user"
-              name="user"
-              placeholder="User"
+              id="email"
+              name="email"
+              placeholder="Email"
               className="border-2 border-slate-700 rounded p-2"
-              value={userLogin.user} 
+              value={userLogin.email} 
               onChange={(e: ChangeEvent<HTMLInputElement>) => updateEstate(e)}
             />
           </div>

@@ -46,7 +46,7 @@ function ProductForm() {
   }
 
   async function findCategoryById(id: string) {
-    await find(`/categories/${id}`, setCategory , {
+    await find(`/category/${id}`, setCategory , {
         headers: {
           Authorization: token,
         },
@@ -55,7 +55,7 @@ function ProductForm() {
   }
 
   async function findCategories() {
-    await find('/categories', setCategories , {
+    await find('/category', setCategories , {
         headers: {
           Authorization: token,
         },
@@ -73,7 +73,7 @@ function ProductForm() {
   useEffect(() => {
     findCategories();
     if (id !== undefined) {
-      findCategoryById(id);
+      findProductById(id);
       console.log(category);
     }
   }, [id]);
@@ -95,7 +95,7 @@ function ProductForm() {
   }
 
   function goBack() {
-    navigate('/products');
+    navigate('/product');
   }
 
   async function createNewProduct(e: ChangeEvent<HTMLFormElement>) {
@@ -105,7 +105,7 @@ function ProductForm() {
 
     if (id != undefined) {
       try {
-        await update(`/products`, product, setProduct, {
+        await update(`/product`, product, setProduct, {
           headers: {
             Authorization: token,
           },
@@ -122,7 +122,7 @@ function ProductForm() {
       }
     } else {
       try {
-        await register(`/products`, product, setProduct, 
+        await register(`/product`, product, setProduct, 
             {
           headers: {
             Authorization: token,
@@ -169,6 +169,18 @@ function ProductForm() {
             type="text"
             placeholder="Descrição"
             name="description"
+            required
+            className="border-2 border-slate-700 rounded p-2"
+          />
+        </div>
+        <div className="flex flex-col gap-2">
+          <label htmlFor="quantity">Quantidade Em Estoque</label>
+          <input
+            value={product.quantity}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => updateState(e)}
+            type="number"
+            placeholder="Quantidade"
+            name="quantity"
             required
             className="border-2 border-slate-700 rounded p-2"
           />

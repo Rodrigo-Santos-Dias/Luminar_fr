@@ -16,7 +16,7 @@ function FormUser() {
     const [userData, setUserData] = useState<User>({
       id: 0,
       name: '',
-      user: '',
+      email: '',
       password:'',
       photo: '',
     });
@@ -98,7 +98,7 @@ function FormUser() {
           <div className="flex flex-col gap-2">
             <label htmlFor="email">Email</label>
             <input
-              value={userData.user}
+              value={userData.email}
               onChange={(e: ChangeEvent<HTMLInputElement>) => updateState(e)}
               type="email"
               placeholder="Email"

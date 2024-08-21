@@ -19,7 +19,7 @@ function CategoryForm() {
   const token = user.token;
 
   async function finById(id: string) {
-    await find(`/categories/${id}`, setCategory, {
+    await find(`/category/${id}`, setCategory, {
       headers: {
         Authorization: token,
       },
@@ -33,7 +33,7 @@ function CategoryForm() {
   }, [id])
 
   async function findByName(name: string) {
-    await find(`/categories/name/${name}}`, setCategory, {
+    await find(`/category/name/${name}}`, setCategory, {
       headers: {
         Authorization: token,
       },
@@ -61,7 +61,7 @@ function CategoryForm() {
 
     if (id !== undefined) {
       try {
-        await update(`/categories`, category, setCategory, {
+        await update(`/category`, category, setCategory, {
            headers: {
              'Authorization': token
            }
@@ -76,14 +76,14 @@ function CategoryForm() {
           alert('The token has expired, please log in again')
           handleLogout()
         } else {
-          alert('Error updating the Theme')
+          alert('Error category')
         }
 
       }
 
     } else {
       try {
-        await register(`/categories`, category , setCategory
+        await register(`/category`, category , setCategory
            , {
            headers: {
              'Authorization': token
@@ -91,14 +91,14 @@ function CategoryForm() {
          }
       )
 
-        alert('Theme registered successfully')
+        alert('Category registered successfully')
 
       } catch (error: any) {
         if (error.toString().includes('403')) {
           alert('The token has expired, please log in again')
           handleLogout()
         } else {
-          alert('Error when registering the Theme')
+          alert('Error when registering the Category ')
         }
       }
     }
@@ -107,7 +107,7 @@ function CategoryForm() {
   }
 
   function goBack() {
-    navigate("/categories")
+    navigate("/categoriy")
   }
 
   useEffect(() => {
@@ -125,13 +125,13 @@ function CategoryForm() {
 
       <form className="w-1/2 flex flex-col gap-4" onSubmit={generateNewCategory}>
         <div className="flex flex-col gap-2">
-          <label htmlFor="description">Category description</label>
+          <label htmlFor="name">Category description</label>
           <input
             type="text"
-            placeholder="Description"
-            name='description'
+            placeholder="Name"
+            name='name'
             className="border-2 border-slate-700 rounded p-2"
-            value={category.description}
+            value={category.name}
             onChange={(e: ChangeEvent<HTMLInputElement>) => updateState(e)}
           />
         </div>

@@ -18,7 +18,7 @@ function ListCategories() {
 
   async function findCategory() {
     try {
-      await find('/categories', setCategory, {
+      await find('/category', setCategory, {
         headers: { Authorization: token },
       });
     } catch (error: any) {
