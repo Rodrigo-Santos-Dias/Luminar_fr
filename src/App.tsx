@@ -37,6 +37,7 @@ function App() {
               <Route path="/registerProduct" element={<ProductForm />} />
               <Route path="/editProduct/:id" element={<ProductForm />} />
               <Route path="/user" element={<Profille />} />
+              <Route path="/ProductDetails/:name" element={<Profille />} />
             </Routes>
           </div>
           <Footer />
