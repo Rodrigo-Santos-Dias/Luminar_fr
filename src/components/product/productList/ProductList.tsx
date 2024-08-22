@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { find } from '../../../services/Services';
 import { toastAlert } from '../../../util/toastAlert';
-import CardProduct from '../productCard/productCard';
+import CardProduct from '../productCard/ProductCard';
 import Products from '../../../models/Products';
 import { AuthContext } from '../../../contexts/AuthContext';
 
