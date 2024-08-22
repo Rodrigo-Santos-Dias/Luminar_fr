@@ -80,7 +80,7 @@ function login(e: ChangeEvent<HTMLFormElement>) {
 
           <p>
             Ainda não tem uma conta?{' '}
-            <Link to="/singUp" className="text-indigo-800 hover:underline">
+            <Link to="/register" className="text-indigo-800 hover:underline">
               Cadastre-se
             </Link>
           </p>
