@@ -22,7 +22,7 @@ function App() {
       <AuthProvider>
         <BrowserRouter>
           <Navbar />
-          <div className="min-h-[80vh]">
+          <div className="min-h-[80vh] bg-white">
             <Routes>
               <Route path="/" element={<SingUp />} />
               <Route path="/login" element={<Login />} />
