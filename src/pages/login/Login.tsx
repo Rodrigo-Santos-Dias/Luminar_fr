@@ -40,7 +40,7 @@ function login(e: ChangeEvent<HTMLFormElement>) {
   return (
     <>
 <div className="grid grid-cols-1 lg:grid-cols-2 h-screen bg-white">
-  {/* Lado Esquerdo: Formulário de Login */}
+ 
   <div className="flex flex-col justify-center items-center bg-white">
     {/* Logo */}
     <div className="flex justify-center bg-white mb-6">
@@ -48,7 +48,7 @@ function login(e: ChangeEvent<HTMLFormElement>) {
     </div>
 
     <div className="bg-white shadow-lg p-8 w-3/4 lg:w-2/3 border border-[#220660]">
-      {/* Formulário */}
+      
       <form className="flex flex-col gap-4" onSubmit={login}>
         <h2 className="text-slate-900 text-3xl text-center font-bold mb-6">Entrar</h2>
         
@@ -107,7 +107,7 @@ function login(e: ChangeEvent<HTMLFormElement>) {
     </div>
   </div>
 
-  {/* Lado Direito: Imagem (Oculta em telas pequenas) */}
+  
   <div className="relative w-full h-screen overflow-hidden hidden lg:block">
     <img src={sideImage} alt="Side Image" className="w-full h-full" />
   </div>
