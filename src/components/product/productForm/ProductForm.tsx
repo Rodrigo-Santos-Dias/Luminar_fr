@@ -1,12 +1,11 @@
-import { useContext, useState, useEffect, ChangeEvent } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { AuthContext } from "../../../contexts/AuthContext";
-import Category from "../../../models/Categories";
+import { useContext, useState, useEffect, ChangeEvent } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthContext';
+import Category from '../../../models/Categories';
 
-import { toastAlert } from "../../../util/toastAlert";
-import Products from "../../../models/Products";
-import { find, update, register } from "../../../services/Services";
-
+import { toastAlert } from '../../../util/toastAlert';
+import Products from '../../../models/Products';
+import { find, update, register } from '../../../services/Services';
 
 function ProductForm() {
   let navigate = useNavigate();
@@ -21,46 +20,42 @@ function ProductForm() {
   const [category, setCategory] = useState<Category>({
     id: 0,
     name: '',
-    description:'',
-    
+    description: '',
   });
 
   const [product, setProduct] = useState<Products>({
     id: 0,
     name: '',
     description: '',
-    image:'',
+    image: '',
     price: 0,
     quantity: 0,
     user: null,
-    category: null
-
+    category: null,
   });
 
   async function findProductById(id: string) {
-    await find(`/products/${id}`, setProduct ,{
-        headers: {
-          Authorization: token,
-        },
+    await find(`/product/${id}`, setProduct, {
+      headers: {
+        Authorization: token,
+      },
     });
   }
 
   async function findCategoryById(id: string) {
-    await find(`/category/${id}`, setCategory , {
-        headers: {
-          Authorization: token,
-        },
-      });
-
+    await find(`/category/${id}`, setCategory, {
+      headers: {
+        Authorization: token,
+      },
+    });
   }
 
   async function findCategories() {
-    await find('/category', setCategories , {
-        headers: {
-          Authorization: token,
-        },
-      });
-
+    await find('/category', setCategories, {
+      headers: {
+        Authorization: token,
+      },
+    });
   }
 
   useEffect(() => {
@@ -90,7 +85,6 @@ function ProductForm() {
       ...product,
       [e.target.name]: e.target.value,
       category: category,
-     
     });
   }
 
@@ -122,8 +116,7 @@ function ProductForm() {
       }
     } else {
       try {
-        await register(`/product`, product, setProduct, 
-            {
+        await register(`/product`, product, setProduct, {
           headers: {
             Authorization: token,
           },
@@ -146,7 +139,9 @@ function ProductForm() {
 
   return (
     <div className="container flex flex-col mx-auto items-center">
-      <h1 className="text-4xl text-center my-8">{id !== undefined ? 'Editar Produto' : 'Cadastrar Produto'}</h1>
+      <h1 className="text-4xl text-center my-8">
+        {id !== undefined ? 'Editar Produto' : 'Cadastrar Produto'}
+      </h1>
 
       <form onSubmit={createNewProduct} className="flex flex-col w-1/2 gap-4">
         <div className="flex flex-col gap-2">
@@ -181,6 +176,7 @@ function ProductForm() {
             type="number"
             placeholder="Quantidade"
             name="quantity"
+            min="0"
             required
             className="border-2 border-slate-700 rounded p-2"
           />
@@ -193,13 +189,19 @@ function ProductForm() {
             type="number"
             placeholder="Preço"
             name="price"
+            min="0"
             required
             className="border-2 border-slate-700 rounded p-2"
           />
         </div>
         <div className="flex flex-col gap-2">
           <p>Categoria do Produto</p>
-          <select name="category" id="category" className="border p-2 border-slate-800 rounded" onChange={(e) => findCategoryById(e.currentTarget.value)}>
+          <select
+            name="category"
+            id="category"
+            className="border p-2 border-slate-800 rounded"
+            onChange={(e) => findCategoryById(e.currentTarget.value)}
+          >
             <option value="" selected disabled>
               Selecione uma categoria
             </option>
@@ -210,8 +212,18 @@ function ProductForm() {
             ))}
           </select>
         </div>
-        <button disabled={carregandoCategoria} type="submit" className="rounded disabled:bg-slate-200 bg-indigo-400 hover:bg-indigo-800 text-white font-bold w-1/2 mx-auto block py-2">
-          {carregandoCategoria ? <span>Carregando</span> : id !== undefined ? 'Editar' : 'Cadastrar'}
+        <button
+          disabled={carregandoCategoria}
+          type="submit"
+          className="rounded disabled:bg-slate-200 bg-indigo-400 hover:bg-indigo-800 text-white font-bold w-1/2 mx-auto block py-2"
+        >
+          {carregandoCategoria ? (
+            <span>Carregando</span>
+          ) : id !== undefined ? (
+            'Editar'
+          ) : (
+            'Cadastrar'
+          )}
         </button>
       </form>
     </div>

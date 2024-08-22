@@ -16,36 +16,32 @@ import DeleteProduct from './components/product/deleteProduct/DeleteProduct';
 import ProductForm from './components/product/productForm/ProductForm';
 import Profille from './pages/profille/Profille';
 
-
-
-
-
 function App() {
   return (
     <>
-    <AuthProvider>
+      <AuthProvider>
         <BrowserRouter>
           <Navbar />
-          <div className='min-h-[80vh]'>
+          <div className="min-h-[80vh]">
             <Routes>
               <Route path="/" element={<SingUp />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<SingUp />} />
               <Route path="/home" element={<Home />} />
-              <Route path="/category" element={<ListCategories/>} />
+              <Route path="/category" element={<ListCategories />} />
               <Route path="/registerCategory" element={<CategoryForm />} />
               <Route path="/updateCategory/:id" element={<CategoryForm />} />
               <Route path="/deleteCategory/:id" element={<DeleteCategory />} />
-              <Route path="/product" element={<ProductList/>} />
-              <Route path="/deleteProduct/:id" element={<DeleteProduct/>} />
+              <Route path="/product" element={<ProductList />} />
+              <Route path="/deleteProduct/:id" element={<DeleteProduct />} />
               <Route path="/registerProduct" element={<ProductForm />} />
               <Route path="/editProduct/:id" element={<ProductForm />} />
-              <Route path="/profille" element={<Profille/>}/>
+              <Route path="/user" element={<Profille />} />
             </Routes>
           </div>
           <Footer />
         </BrowserRouter>
-        </AuthProvider>
+      </AuthProvider>
     </>
   );
 }
