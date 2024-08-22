@@ -43,8 +43,8 @@ function login(e: ChangeEvent<HTMLFormElement>) {
   {/* Lado Esquerdo: Formulário de Login */}
   <div className="flex flex-col justify-center items-center bg-white">
     {/* Logo */}
-    <div className="flex justify-center bg-white mb-6">
-      <img src={logo} alt="Logo" className="w-24 h-24" />
+    <div className="flex justify-center bg-white mb-6 w-24 h-24">
+      <img src={logo} alt="Logo" className="w-full h-full" />
     </div>
 
     <div className="bg-white shadow-lg p-8 w-3/4 lg:w-2/3 border border-[#220660]">

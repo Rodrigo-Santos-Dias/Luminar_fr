@@ -1,0 +1,91 @@
+/* Ajustes gerais para o fundo da página de cadastro */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #fffdfd;
+  }
+  
+  /* Estilo para o contêiner principal */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    height: 100vh;
+    gap: 0;
+    align-items: center;
+  }
+  
+  /* Ajusta a altura do formulário e alinha com a imagem */
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 400px; /* Ajuste conforme necessário */
+    height: 70vh; /* Ajuste conforme necessário */
+    padding: 1.5em;
+    box-shadow: none; /* Remove a borda se houver alguma */
+    border: none; /* Remove qualquer borda */
+    background-color: transparent; /* Garante que o fundo não tenha cor */
+  }
+  
+  /* Ajustes para o título do formulário */
+  form h2 {
+    font-size: 3em;
+    color: #1e293b;
+  }
+  
+  /* Estilo dos campos de input no formulário */
+  input {
+    border: 2px solid #220660;
+    border-radius: 28px;
+    padding: 0.75em;
+    margin-bottom: 1em;
+    transition: border-color 0.3s;
+  }
+  
+  input:focus {
+    border-color: #FFDE59;
+  }
+  
+  /* Ajusta os botões */
+  button {
+    border-radius: 28px;
+    padding: 0.75em;
+    font-size: 1em;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    opacity: 0.9;
+  }
+  
+  /* Estilo da imagem de fundo */
+  .fundoCadastro {
+    background-image: url('../../assets/sideImage.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+  }
+  
+  /* Estilo do contêiner da logo */
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    margin-bottom: 1em;
+  }
+  
+  /* Ajusta a logo */
+  .logo {
+    height: 6em;
+    padding: 1.5em;
+    transition: filter 300ms;
+  }
+  
+  .logo:hover {
+    filter: drop-shadow(0 0 2em #646cffaa);
+  }
+  
