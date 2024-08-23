@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import axios from 'axios';
 
 const api = axios.create({
-     baseURL: 'https://luminar-cbmb.onrender.com/'
+  baseURL: import.meta.env.VITE_API_URL
+})
 
-});
 
 export const registerUser = async (
   url: string,
