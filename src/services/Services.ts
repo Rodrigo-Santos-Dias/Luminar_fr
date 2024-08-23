@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  // baseURL:'https://luminar-aikf.onrender.com/'
-  baseURL: 'http://localhost:8080/',
+   baseURL:'https://luminar-aikf.onrender.com/'
 });
 
 export const registerUser = async (
