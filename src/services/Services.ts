@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-     baseURL: 'https://luminar-aikf.onrender.com/'
+     baseURL: 'https://luminar-cbmb.onrender.com/'
 
 });
 
