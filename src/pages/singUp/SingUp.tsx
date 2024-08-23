@@ -4,18 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import './SingUp.css';
 import { registerUser } from '../../services/Services';
 import User from '../../models/Users';
+import sideImage from '../../assets/sideImage.png';
+import logo from '../../assets/logo.png';
 
-
-// Componente de Registro de Usuário
 function SingUp() {
-
-  // Hook para navegação entre rotas
   const navigate = useNavigate();
-
-  // Estado para armazenar a confirmação de senha
   const [confirmPassword, setConfirmPassword] = useState<string>("");
-
-  // Estado para armazenar os dados do usuário a ser registrado
   const [user, setUser] = useState<User>({
     id: 0,
     name: '',
@@ -23,8 +17,6 @@ function SingUp() {
     password: '',
     photo: ''
   });
-
-  // Estado para armazenar a resposta do backend após o registro
   const [userResponse, setUserResponse] = useState<User>({
     id: 0,
     name: '',
@@ -33,152 +25,148 @@ function SingUp() {
     photo: ''
   });
 
-  
-  // useEffect que redireciona para a tela de login quando o usuário é registrado com sucesso
   useEffect(() => {
-    if (userResponse.id!==0) {
-      back()
+    if (userResponse.id !== 0) {
+      back();
     }
-  }, [userResponse])
+  }, [userResponse]);
 
   function back() {
-    navigate('/login')
+    navigate('/login');
   }
 
-  // Função que atualiza o estado da confirmação de senha
   const handleConfirmPassword = (e: ChangeEvent<HTMLInputElement>) => {
     setConfirmPassword(e.target.value);
   };
 
-  // Função que atualiza o estado do usuário com os valores inseridos no formulário
   const updateState = (e: ChangeEvent<HTMLInputElement>) => {
     setUser({
       ...user,
-      [e.target.name]: e.target.value
-    })
+      [e.target.name]: e.target.value,
+    });
   };
 
-  // Função assíncrona para registrar o novo usuário ao submeter o formulário
-   async function registerNewUser(e: ChangeEvent<HTMLFormElement>) {
-      e.preventDefault()
-    
-    // Verifica se a senha e a confirmação são iguais e se a senha tem pelo menos 8 caracteres
-    if (confirmPassword === user.password && user.password.length >= 8) {
+  async function registerNewUser(e: ChangeEvent<HTMLFormElement>) {
+    e.preventDefault();
 
+    if (confirmPassword === user.password && user.password.length >= 8) {
       try {
-        // Tenta registrar o usuário utilizando o serviço registerUser
         await registerUser(`/user/register`, user, setUserResponse);
         alert('User registered successfully');
       } catch (error) {
         alert('Error when registering the User');
-        
       }
-
     } else {
-      // Se as senhas não coincidem ou a senha não é longa o suficiente, exibe um alerta e reinicia os campos de senha
       alert('Inconsistent data. Check your registration information');
-      setUser({ ...user, password: "" }) // Reinicia o campo de Senha
-      setConfirmPassword("")   
-      }
-    }  
+      setUser({ ...user, password: '' });
+      setConfirmPassword('');
+    }
+  }
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 h-screen place-items-center font-bold">
-      {/* Parte esquerda da tela, visível apenas em dispositivos grandes */}
-      <div className="fundoCadastro hidden lg:block"></div>
-
-      {/* Formulário de cadastro */}
-      <form className='flex justify-center items-center flex-col w-2/3 gap-3' onSubmit={registerNewUser}>
-        <h2 className='text-slate-900 text-5xl'>Cadastrar</h2>
-
-        {/* Campo para nome */}
-        <div className="flex flex-col w-full">
-          <label htmlFor="name">Nome</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Name"
-            className="border-2 border-slate-700 rounded p-2"
-            value={user.name} 
-            onChange={(e: ChangeEvent<HTMLInputElement>) => updateState(e)}
-          />
+    {/* Formulário de cadastro - Agora no lado esquerdo */}
+    <div className="flex flex-col justify-center items-center bg-white h-full w-full lg:w-2/3">
+      <div className="flex flex-col justify-center items-center h-full w-3/4 lg:w-2/3">
+        {/* Logo */}
+        <div className="flex justify-center bg-white mb-6 w-24 h-24">
+          <img src={logo} alt="Logo" className="w-full h-full" />
         </div>
-
-        {/* Campo para usuário */}
-        <div className="flex flex-col w-full">
-          <label htmlFor="email">Email</label>
-          <input
-            type="text"
-            id="email"
-            name="email"
-            placeholder="Email"
-            className="border-2 border-slate-700 rounded p-2"
-            value={user.email} 
-            onChange={(e: ChangeEvent<HTMLInputElement>) => updateState(e)}
-          />
+  
+        {/* Formulário de Cadastro */}
+        <div className="bg-white shadow-lg p-8 w-full border border-[#220660] flex-grow">
+          <form className="flex flex-col gap-2" onSubmit={registerNewUser}>
+            <h2 className="text-slate-900 text-3xl text-center font-bold mb-6">Cadastrar</h2>
+  
+            <div className="flex flex-col w-full">
+              <label htmlFor="name" className="text-sm">Nome</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Name"
+                className="border border-[#220660] rounded-[28px] p-2 text-sm focus:border-[#FFDE59] transition-colors duration-300"
+                value={user.name}
+                onChange={updateState}
+              />
+            </div>
+  
+            <div className="flex flex-col w-full">
+              <label htmlFor="email" className="text-sm">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Email"
+                className="border border-[#220660] rounded-[28px] p-2 text-sm focus:border-[#FFDE59] transition-colors duration-300"
+                value={user.email}
+                onChange={updateState}
+              />
+            </div>
+  
+            <div className="flex flex-col w-full">
+              <label htmlFor="photo" className="text-sm">Foto</label>
+              <input
+                type="text"
+                id="photo"
+                name="photo"
+                placeholder="Photo"
+                className="border border-[#220660] rounded-[28px] p-2 text-sm focus:border-[#FFDE59] transition-colors duration-300"
+                value={user.photo}
+                onChange={updateState}
+              />
+            </div>
+  
+            <div className="flex flex-col w-full">
+              <label htmlFor="password" className="text-sm">Senha</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Password"
+                className="border border-[#220660] rounded-[28px] p-2 text-sm focus:border-[#FFDE59] transition-colors duration-300"
+                value={user.password}
+                onChange={updateState}
+              />
+            </div>
+  
+            <div className="flex flex-col w-full">
+              <label htmlFor="confirmPassword" className="text-sm">Confirmar Senha</label>
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                placeholder="Confirm Password"
+                className="border border-[#220660] rounded-[28px] p-2 text-sm focus:border-[#FFDE59] transition-colors duration-300"
+                value={confirmPassword}
+                onChange={handleConfirmPassword}
+              />
+            </div>
+  
+            <button
+              type="submit"
+              className="rounded-[28px] bg-[#FFDE59] hover:bg-[#F9C23C] text-black py-2 px-4 transition-colors duration-300"
+            >
+              Cadastrar
+            </button>
+            <button
+              type="button"
+              className="text-indigo-800 hover:underline text-sm"
+              onClick={() => navigate('/login')}
+            >
+              Já tem uma conta? Entrar
+            </button>
+          </form>
         </div>
-
-        {/* Campo para foto */}
-        <div className="flex flex-col w-full">
-          <label htmlFor="photo">Foto</label>
-          <input
-            type="text"
-            id="photo"
-            name="photo"
-            placeholder="Photo"
-            className="border-2 border-slate-700 rounded p-2"
-            value={user.photo} 
-            onChange={(e: ChangeEvent<HTMLInputElement>) => updateState(e)}
-          />
-        </div>
-
-        {/* Campo para senha */}
-        <div className="flex flex-col w-full">
-          <label htmlFor="password">Senha</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Password"
-            className="border-2 border-slate-700 rounded p-2"
-            value={user.password} 
-            onChange={(e: ChangeEvent<HTMLInputElement>) => updateState(e)}
-          />
-        </div>
-
-        {/* Campo para confirmação de senha */}
-        <div className="flex flex-col w-full">
-          <label htmlFor="confirmPassword">Confirmar Senha</label>
-          <input
-            type="password"
-            id="confirmPassword"
-            name="confirmPassword"
-            placeholder="Confirm Password"
-            className="border-2 border-slate-700 rounded p-2"
-            value={confirmPassword}
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>handleConfirmPassword(e)}
-          />
-        </div>
-
-        {/* Botões de Cancelar e Cadastrar */}
-        <div className="flex justify-around w-full gap-8">
-          <button
-            type='button'
-            className='rounded text-white bg-red-400 hover:bg-red-700 w-1/2 py-2'
-            onClick={() => navigate('/login')}
-          >
-            Cancelar
-          </button>
-          <button
-            type='submit'
-            className='rounded text-white bg-indigo-400 hover:bg-indigo-900 w-1/2 py-2'
-          >
-            Cadastrar
-          </button>
-        </div>
-      </form>
+      </div>
     </div>
-  )
+  
+    {/* Parte direita da tela, visível apenas em dispositivos grandes */}
+    <div className="fundoCadastro hidden lg:block relative w-full h-full overflow-hidden">
+      <img src={sideImage} alt="Side Image" className="w-full h-full object-cover" />
+    </div>
+  </div>
+  );
 }
-export default SingUp
+
+export default SingUp;
