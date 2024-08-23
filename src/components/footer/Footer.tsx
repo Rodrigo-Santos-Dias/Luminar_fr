@@ -1,7 +1,8 @@
 import { useContext } from 'react'
-import { FacebookLogo, InstagramLogo, LinkedinLogo } from '@phosphor-icons/react'
+import { FacebookLogo, InstagramLogo, WhatsappLogo, YoutubeLogo } from '@phosphor-icons/react'
 import { AuthContext } from '../../contexts/AuthContext'
 
+import logo from '../../assets/logo.png'
 function Footer() {
  
   let footerComponent 
@@ -10,12 +11,12 @@ function Footer() {
     footerComponent = (
       <div className="flex justify-center bg-indigo-900 text-white">
         <div className="container flex flex-col items-center py-4">
-          <p className='text-xl font-bold'>Luminar | Copyright: </p>
-          <p className='text-lg'>Acesse nossas redes sociais</p>
-          <div className='flex gap-2'>
-            <LinkedinLogo size={48} weight='bold' />
-            <InstagramLogo size={48} weight='bold' />
-            <FacebookLogo size={48} weight='bold' />
+          <img src={logo} alt="Luminar logo" className="h-21" /> {/* Adiciona a logo */}
+          <div className='flex gap-6'>
+            <InstagramLogo size={32} weight='bold' />
+            <FacebookLogo size={32} weight='bold' />
+            <YoutubeLogo size={32} weight='bold' />
+            <WhatsappLogo size={32} weight='bold' />
           </div>
         </div>
       </div>    

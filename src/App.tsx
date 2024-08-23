@@ -10,11 +10,12 @@ import ListCategories from './components/category/listCategories/ListCategories'
 import SingUp from './pages/singUp/SingUp';
 import { AuthProvider } from './contexts/AuthContext';
 import Login from './pages/login/Login';
-import Home from './pages/home/Home';
+
 import ProductList from './components/product/productList/ProductList';
 import DeleteProduct from './components/product/deleteProduct/DeleteProduct';
 import ProductForm from './components/product/productForm/ProductForm';
 import Profille from './pages/profille/Profille';
+import { Home } from './pages/home/Home';
 
 function App() {
   return (
