@@ -11,11 +11,13 @@ import SingUp from './pages/singUp/SingUp';
 import { AuthProvider } from './contexts/AuthContext';
 import Login from './pages/login/Login';
 
+
 import ProductList from './components/product/productList/ProductList';
 import DeleteProduct from './components/product/deleteProduct/DeleteProduct';
 import ProductForm from './components/product/productForm/ProductForm';
 import Profille from './pages/profille/Profille';
 import { Home } from './pages/home/Home';
+import ShoppingCart from './pages/shoppingCart/ShoppingCart';
 
 function App() {
   return (
@@ -38,6 +40,7 @@ function App() {
               <Route path="/registerProduct" element={<ProductForm />} />
               <Route path="/editProduct/:id" element={<ProductForm />} />
               <Route path="/user" element={<Profille />} />
+              <Route path="/shopping" element={<ShoppingCart />} />
             </Routes>
           </div>
           <Footer />

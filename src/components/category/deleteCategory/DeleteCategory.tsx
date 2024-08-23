@@ -69,7 +69,7 @@ function DeleteCategory() {
         <div className='container w-1/3 mx-auto'>
             <h1 className='text-4xl text-center my-4'>Delete Category</h1>
 
-            <p className='text-center font-semibold mb-4'>Are you sure you want to delete the following category?</p>
+            <p className='text-center font-semibold mb-4'>Deseja mesmos deletar a categoria abaixo?</p>
 
             <div className='border flex flex-col rounded-2xl overflow-hidden justify-between'>
                 <header className='py-2 px-6 bg-indigo-600 text-white font-bold text-2xl'>Category</header>

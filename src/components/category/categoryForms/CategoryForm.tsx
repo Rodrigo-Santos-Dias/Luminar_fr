@@ -125,7 +125,7 @@ function CategoryForm() {
 
       <form className="w-1/2 flex flex-col gap-4" onSubmit={generateNewCategory}>
         <div className="flex flex-col gap-2">
-          <label htmlFor="name">Category description</label>
+          <label htmlFor="name">Nome Da categoria</label>
           <input
             type="text"
             placeholder="Name"

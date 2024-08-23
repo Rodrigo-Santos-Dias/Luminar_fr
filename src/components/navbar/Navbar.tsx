@@ -27,13 +27,7 @@ function Navbar() {
         }
       });
 
-      if (response && response.length > 0) {
-        setSearchResults(response); // Atualiza o estado com os resultados
-        navigate('/productDetails', { state: { product: response[0] } }); // Redireciona para a página de detalhes do produto
-      } else {
-        console.error('No products found');
-        alert('No products found');
-      }
+     
     } catch (error) {
       console.error('Error fetching products:', error);
     }
@@ -47,7 +41,9 @@ function Navbar() {
         <div className="container flex items-center justify-between">
           {/* Logo aumentada e barra de pesquisa */}
           <div className='flex items-center gap-4'>
+            <Link to={'/home'}>
             <img src={logo} alt="Luminar logo" className="h-16" /> {/* Logo aumentada */}
+            </Link>
             <div className='flex items-center bg-indigo-700 rounded-full px-4 py-2'>
               <MagnifyingGlass size={20} className='text-gray-400' onClick={handleSearch} style={{ cursor: 'pointer' }}/> {/* Clique na lupa para pesquisar */}
               <input 
@@ -62,13 +58,13 @@ function Navbar() {
           </div>
 
           {/* Links de navegação */}
-          <div className='flex items-center gap-8'>
-            <Link to='/home' className='hover:underline'>Home</Link>
+          <div className='flex items-center gap-8'> 
             <Link to='/product' className='hover:underline'>Products</Link>
             <Link to='/registerProduct' className='hover:underline'>Cadastrar Produto</Link>
             <Link to='/registerCategory' className='hover:underline'>Cadastrar Categoria</Link>
-            <Link to='/profile' className='hover:underline'>Usuário</Link>
-            <ShoppingCart size={24} className='text-white cursor-pointer' />
+            <Link to='/shopping' className='hover:underline'>
+            <ShoppingCart  size={24} className='text-white cursor-pointer' />
+            </Link>
             <Link to='' onClick={logout} className='hover:underline'>Logout</Link>
           </div>
         </div>
