@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import Category from '../../../models/Categories'
 import { AuthContext } from '../../../contexts/AuthContext'

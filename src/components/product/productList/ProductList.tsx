@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { find } from '../../../services/Services';
 import { toastAlert } from '../../../util/toastAlert';
 import CardProduct from '../productCard/productCard';
@@ -9,9 +8,9 @@ import { AuthContext } from '../../../contexts/AuthContext';
 function ProductList() {
   const [products, setProducts] = useState<Products[]>([]);
 
-  let navigate = useNavigate();
+  
 
-  const { user, handleLogout } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const token = user.token;
 
   useEffect(() => {
