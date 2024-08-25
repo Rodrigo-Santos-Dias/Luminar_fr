@@ -13,6 +13,8 @@ export const registerUser = async (
 ) => {
   const response = await api.post(url, data);
   setData(response.data);
+
+  //teste
 };
 
 export const login = async (url: string, data: Object, setData: Function) => {
