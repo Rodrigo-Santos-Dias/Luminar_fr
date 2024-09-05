@@ -138,100 +138,103 @@ function ProductForm() {
   const carregandoCategoria = category.name === '';
 
   return (
-    <div className="container flex flex-col mx-auto items-center">
-    <h1 className="text-4xl text-center my-8">
-      {id !== undefined ? 'Editar Produto' : 'Cadastrar Produto'}
-    </h1>
-  
-    <form onSubmit={createNewProduct} className="flex flex-col w-1/2 gap-4">
-      <div className="flex flex-col gap-2">
-        <label htmlFor="name" className="text-sm">Nome do Produto</label>
-        <input
-          value={product.name}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => updateState(e)}
-          type="text"
-          placeholder="Nome"
-          name="name"
-          required
-          className="border border-[#220660] rounded-[28px] p-2 text-sm focus:border-[#FFDE59] transition-colors duration-300"
-        />
-      </div>
-      
-      <div className="flex flex-col gap-2">
-        <label htmlFor="description" className="text-sm">Descrição do Produto</label>
-        <input
-          value={product.description}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => updateState(e)}
-          type="text"
-          placeholder="Descrição"
-          name="description"
-          required
-          className="border border-[#220660] rounded-[28px] p-2 text-sm focus:border-[#FFDE59] transition-colors duration-300"
-        />
-      </div>
-      
-      <div className="flex flex-col gap-2">
-        <label htmlFor="quantity" className="text-sm">Quantidade Em Estoque</label>
-        <input
-          value={product.quantity}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => updateState(e)}
-          type="number"
-          placeholder="Quantidade"
-          name="quantity"
-          min="0"
-          required
-          className="border border-[#220660] rounded-[28px] p-2 text-sm focus:border-[#FFDE59] transition-colors duration-300"
-        />
-      </div>
-      
-      <div className="flex flex-col gap-2">
-        <label htmlFor="price" className="text-sm">Preço do Produto</label>
-        <input
-          value={product.price}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => updateState(e)}
-          type="number"
-          placeholder="Preço"
-          name="price"
-          min="0"
-          required
-          className="border border-[#220660] rounded-[28px] p-2 text-sm focus:border-[#FFDE59] transition-colors duration-300"
-        />
-      </div>
-      
-      <div className="flex flex-col gap-2">
-        <p className="text-sm">Categoria do Produto</p>
-        <select
-          name="category"
-          id="category"
-          className="border border-[#220660] rounded-[28px] p-2 text-sm focus:border-[#FFDE59] transition-colors duration-300"
-          onChange={(e) => findCategoryById(e.currentTarget.value)}
-        >
-          <option value="" selected disabled>
-            Selecione uma categoria
-          </option>
-          {categories.map((category) => (
-            <option key={category.id} value={category.id}>
-              {category.name}
-            </option>
-          ))}
-        </select>
-      </div>
-      
-      <button
-        disabled={carregandoCategoria}
-        type="submit"
-        className="rounded-[28px] disabled:bg-slate-200 bg-[#FFDE59] hover:bg-[#F9C23C] text-black font-bold w-1/2 mx-auto block py-2 transition-colors duration-300"
+    <div className="container w-full max-w-[700px] flex flex-col items-center justify-center mx-auto border-2 mt-[40px] mb-[50px] p-6 shadow-lg transition-transform duration-500 hover:scale-105">
+  <h1 className="text-4xl text-center my-8">
+    {id !== undefined ? 'Editar Produto' : 'Cadastrar Produto'}
+  </h1>
+
+  {/* Card do formulário */}
+  <form onSubmit={createNewProduct} className="w-[500px] flex flex-col gap-6">
+    <div className="flex flex-col gap-2">
+      <label htmlFor="name" className="text-lg">Nome do Produto</label>
+      <input
+        value={product.name}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => updateState(e)}
+        type="text"
+        placeholder="Nome"
+        name="name"
+        required
+        className="border-2 border-[#220660] rounded-[28px] p-3 transition-all"
+      />
+    </div>
+
+    <div className="flex flex-col gap-2">
+      <label htmlFor="description" className="text-lg">Descrição do Produto</label>
+      <input
+        value={product.description}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => updateState(e)}
+        type="text"
+        placeholder="Descrição"
+        name="description"
+        required
+        className="border-2 border-[#220660] rounded-[28px] p-3 transition-all"
+      />
+    </div>
+
+    <div className="flex flex-col gap-2">
+      <label htmlFor="quantity" className="text-lg">Quantidade Em Estoque</label>
+      <input
+        value={product.quantity}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => updateState(e)}
+        type="number"
+        placeholder="Quantidade"
+        name="quantity"
+        min="0"
+        required
+        className="border-2 border-[#220660] rounded-[28px] p-3 transition-all"
+      />
+    </div>
+
+    <div className="flex flex-col gap-2">
+      <label htmlFor="price" className="text-lg">Preço do Produto</label>
+      <input
+        value={product.price}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => updateState(e)}
+        type="number"
+        placeholder="Preço"
+        name="price"
+        min="0"
+        required
+        className="border-2 border-[#220660] rounded-[28px] p-3 transition-all"
+      />
+    </div>
+
+    <div className="flex flex-col gap-2">
+      <p className="text-lg">Categoria do Produto</p>
+      <select
+        name="category"
+        id="category"
+        className="border-2 border-[#220660] rounded-[28px] p-3 transition-all"
+        onChange={(e) => findCategoryById(e.currentTarget.value)}
       >
-        {carregandoCategoria ? (
-          <span>Carregando</span>
-        ) : id !== undefined ? (
-          'Editar'
-        ) : (
-          'Cadastrar'
-        )}
-      </button>
-    </form>
-  </div>
+        <option value="" selected disabled>
+          Selecione uma categoria
+        </option>
+        {categories.map((category) => (
+          <option key={category.id} value={category.id}>
+            {category.name}
+          </option>
+        ))}
+      </select>
+    </div>
+
+    <button
+      disabled={carregandoCategoria}
+      type="submit"
+      className="rounded-[28px] text-slate-100 bg-[#FFDE59] hover:bg-[#F9C23C] w-[300px] py-3 mx-auto block shadow-lg transition-colors"
+    >
+      {carregandoCategoria ? (
+        <span>Carregando</span>
+      ) : id !== undefined ? (
+        'Editar'
+      ) : (
+        'Cadastrar'
+      )}
+    </button>
+  </form>
+</div>
+
+
   
   );
 }

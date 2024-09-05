@@ -138,75 +138,88 @@ function ProductForm() {
   const carregandoCategoria = category.name === '';
 
   return (
-    <div className="container flex flex-col mx-auto items-center">
-    <h1 className="text-4xl text-center my-8">
-      {id !== undefined ? 'Editar Produto' : 'Cadastrar Produto'}
-    </h1>
-  
-    <form onSubmit={createNewProduct} className="flex flex-col w-1/2 gap-4">
+<div className="container w-full max-w-[700px] flex flex-col items-center justify-center mx-auto border-4 border-[#220660] rounded-[28px] mt-[40px] p-6 shadow-lg shadow-[#220660]/50 transition-transform duration-500 hover:scale-105">
+  <h1 className="text-4xl text-center my-8">
+    {id !== undefined ? 'Editar Produto' : 'Cadastrar Produto'}
+  </h1>
+
+  <form onSubmit={createNewProduct} className="w-full flex flex-col gap-6 border-4 border-[#220660] rounded-[28px] p-4 shadow-lg shadow-[#220660]/50">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {/* Nome do Produto */}
       <div className="flex flex-col gap-2">
-        <label htmlFor="name" className="text-sm">Nome do Produto</label>
+        <label htmlFor="name" className="text-lg">Nome do Produto</label>
         <input
           value={product.name}
           onChange={(e: ChangeEvent<HTMLInputElement>) => updateState(e)}
           type="text"
-          placeholder="Nome"
+          placeholder="Nome do Produto"
+          id="name"
           name="name"
           required
-          className="border border-[#220660] rounded-[28px] p-2 text-sm focus:border-[#FFDE59] transition-colors duration-300"
+          className={`border-2 border-[#220660] rounded-[28px] p-3 transition-all ${
+            product.name ? 'input-success' : 'input-error'
+          }`}
         />
       </div>
-      
+
+      {/* Descrição do Produto */}
       <div className="flex flex-col gap-2">
-        <label htmlFor="description" className="text-sm">Descrição do Produto</label>
+        <label htmlFor="description" className="text-lg">Descrição do Produto</label>
         <input
           value={product.description}
           onChange={(e: ChangeEvent<HTMLInputElement>) => updateState(e)}
           type="text"
-          placeholder="Descrição"
+          placeholder="Ex: Produto de alta qualidade"
+          id="description"
           name="description"
           required
-          className="border border-[#220660] rounded-[28px] p-2 text-sm focus:border-[#FFDE59] transition-colors duration-300"
+          className="border-2 border-[#220660] rounded-[28px] p-3 transition-all"
         />
       </div>
-      
+
+      {/* Quantidade em Estoque */}
       <div className="flex flex-col gap-2">
-        <label htmlFor="quantity" className="text-sm">Quantidade Em Estoque</label>
+        <label htmlFor="quantity" className="text-lg">Quantidade em Estoque</label>
         <input
           value={product.quantity}
           onChange={(e: ChangeEvent<HTMLInputElement>) => updateState(e)}
           type="number"
-          placeholder="Quantidade"
+          placeholder="Ex: 100 unidades"
+          id="quantity"
           name="quantity"
           min="0"
           required
-          className="border border-[#220660] rounded-[28px] p-2 text-sm focus:border-[#FFDE59] transition-colors duration-300"
+          className="border-2 border-[#220660] rounded-[28px] p-3 transition-all"
         />
       </div>
-      
+
+      {/* Preço do Produto */}
       <div className="flex flex-col gap-2">
-        <label htmlFor="price" className="text-sm">Preço do Produto</label>
+        <label htmlFor="price" className="text-lg">Preço do Produto</label>
         <input
           value={product.price}
           onChange={(e: ChangeEvent<HTMLInputElement>) => updateState(e)}
           type="number"
-          placeholder="Preço"
+          placeholder="Ex: 500.00"
+          id="price"
           name="price"
           min="0"
           required
-          className="border border-[#220660] rounded-[28px] p-2 text-sm focus:border-[#FFDE59] transition-colors duration-300"
+          className="border-2 border-[#220660] rounded-[28px] p-3 transition-all"
         />
       </div>
-      
+
+      {/* Categoria do Produto */}
       <div className="flex flex-col gap-2">
-        <p className="text-sm">Categoria do Produto</p>
+        <label htmlFor="category" className="text-lg">Categoria do Produto</label>
         <select
           name="category"
           id="category"
-          className="border border-[#220660] rounded-[28px] p-2 text-sm focus:border-[#FFDE59] transition-colors duration-300"
+          className="border-2 border-[#220660] rounded-[28px] p-3 transition-all"
           onChange={(e) => findCategoryById(e.currentTarget.value)}
+          defaultValue=""
         >
-          <option value="" selected disabled>
+          <option value="" disabled>
             Selecione uma categoria
           </option>
           {categories.map((category) => (
@@ -216,23 +229,38 @@ function ProductForm() {
           ))}
         </select>
       </div>
-      
-      <button
-        disabled={carregandoCategoria}
-        type="submit"
-        className="rounded-[28px] disabled:bg-slate-200 bg-[#FFDE59] hover:bg-[#F9C23C] text-black font-bold w-1/2 mx-auto block py-2 transition-colors duration-300"
-      >
-        {carregandoCategoria ? (
-          <span>Carregando</span>
-        ) : id !== undefined ? (
-          'Editar'
-        ) : (
-          'Cadastrar'
-        )}
-      </button>
-    </form>
-  </div>
-  
+
+      {/* Imagem do Produto */}
+      <div className="flex flex-col gap-2">
+        <label htmlFor="image" className="text-lg">Imagem do Produto</label>
+        <input
+          type="file"
+          accept="image/*"
+          name="image"
+          id="image"
+          className="border-2 border-[#220660] rounded-[28px] p-3 transition-all"
+        />
+      </div>
+    </div>
+
+    {/* Botão de submissão */}
+    <button
+      disabled={carregandoCategoria}
+      type="submit"
+      className="rounded-[28px] disabled:bg-slate-200 bg-[#FFDE59] hover:bg-[#FFB800] w-[300px] py-3 mx-auto block shadow-lg transition-colors hover:scale-105"
+    >
+      {carregandoCategoria ? (
+        <span>Carregando...</span>
+      ) : id !== undefined ? (
+        'Editar'
+      ) : (
+        'Cadastrar'
+      )}
+    </button>
+  </form>
+</div>
+
+
   );
 }
 

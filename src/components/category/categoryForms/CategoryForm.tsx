@@ -68,15 +68,15 @@ function CategoryForm() {
         }
       )
 
-        alert('Category updated successfully')
+        alert('Categoria atualizada com sucesso!')
         goBack()
 
       } catch (error: any) {
         if (error.toString().includes('403')) {
-          alert('The token has expired, please log in again')
+          alert('Seu token expirou, por favor logue novamente!')
           handleLogout()
         } else {
-          alert('Error category')
+          alert('Erro em categoria')
         }
 
       }
@@ -91,14 +91,14 @@ function CategoryForm() {
          }
       )
 
-        alert('Category registered successfully')
+        alert('Categoria registrada novamente!')
 
       } catch (error: any) {
         if (error.toString().includes('403')) {
-          alert('The token has expired, please log in again')
+          alert('Seu token expirou, por favor logue novamente!')
           handleLogout()
         } else {
-          alert('Error when registering the Category ')
+          alert('Erro ao registrar uma categoria!')
         }
       }
     }
@@ -107,42 +107,54 @@ function CategoryForm() {
   }
 
   function goBack() {
-    navigate("/categoriy")
+    navigate("/category")
   }
 
   useEffect(() => {
     if (token === '') {
-      alert('You need to be logged in');
+      alert('Você precisa estar logado!');
       navigate('/login');
     }
   }, [token]);
 
   return (
-    <div className="container flex flex-col items-center justify-center mx-auto">
-      <h1 className="text-4xl text-center my-8">
-        {id === undefined ? 'Register a new category' : 'Edit category'}
-      </h1>
-
-      <form className="w-1/2 flex flex-col gap-4" onSubmit={generateNewCategory}>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="name">Nome Da categoria</label>
-          <input
-            type="text"
-            placeholder="Name"
-            name='name'
-            className="border-2 border-slate-700 rounded p-2"
-            value={category.name}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => updateState(e)}
-          />
-        </div>
-        <button
-          className="rounded text-slate-100 bg-indigo-400 hover:bg-indigo-800 w-1/2 py-2 mx-auto block"
-          type="submit"
-        >
-          {id === undefined ? 'Register' : 'Edit'}
-        </button>
-      </form>
-    </div>
+    <div className="container w-full max-w-[700px] flex flex-col items-center justify-center mx-auto  border-2  mt-[40px] p-6 shadow-lg transition-transform duration-500 hover:scale-105">
+    <h1 className="text-4xl text-center my-8 ">
+      {id === undefined ? 'Registre uma nova categoria' : 'Editar categoria'}
+    </h1>
+  
+    <form className="w-1/2 flex flex-col gap-6" onSubmit={generateNewCategory}>
+      <div className="flex flex-col gap-2">
+        <label htmlFor="name" className="text-lg ">Nome Da categoria</label>
+        <input
+          type="text"
+          placeholder="Nome"
+          name='name'
+          className="border-2 border-[#220660] rounded-[28px] p-3   transition-all"
+          value={category.name}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => updateState(e)}
+        />
+      </div>
+      <div className="flex flex-col gap-2">
+        <label htmlFor="description" className="text-lg ">Descrição</label>
+        <input
+          type="text"
+          placeholder="Descrição"
+          name='description'
+          className="border-2 border-[#220660] rounded-[28px] p-3  transition-all"
+          value={category.description}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => updateState(e)}
+        />
+      </div>
+      <button
+        className="rounded-[28px] text-slate-100 bg-[#FFDE59] hover:bg-[#FFB800] w-[300px] py-3 mx-auto block shadow-lg transition-colors"
+        type="submit"
+      >
+        {id === undefined ? 'Registrar' : 'Editar'}
+      </button>
+    </form>
+  </div>
+  
   );
 }
 
