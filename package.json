@@ -17,7 +17,8 @@
     "react-loader-spinner": "5.3.4",
     "react-router-dom": "^6.26.0",
     "react-toastify": "9.1.2",
-    "reactjs-popup": "^2.0.6"
+    "reactjs-popup": "^2.0.6",
+    "swiper": "^11.1.12"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",

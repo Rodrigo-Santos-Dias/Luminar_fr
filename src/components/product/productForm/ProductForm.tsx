@@ -34,6 +34,15 @@ function ProductForm() {
     category: null,
   });
 
+const [productImage, setProductImage] = useState<File | null>(null);
+
+const handleImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
+  const file = e.target.files?.[0];
+  if (file) {
+    setProductImage(file);  // Salva a imagem no estado
+  }
+};
+
   async function findProductById(id: string) {
     await find(`/product/${id}`, setProduct, {
       headers: {
@@ -157,6 +166,15 @@ function ProductForm() {
         className="border-2 border-[#220660] rounded-[28px] p-3 transition-all"
       />
     </div>
+        <div className="flex flex-col gap-2">
+        <label htmlFor="image" className="text-lg">Imagem do Produto</label>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => handleImageUpload(e)}  // Função para lidar com o upload
+          className="border-2 border-[#220660] rounded-[28px] p-3 transition-all"
+        />
+      </div>
 
     <div className="flex flex-col gap-2">
       <label htmlFor="description" className="text-lg">Descrição do Produto</label>

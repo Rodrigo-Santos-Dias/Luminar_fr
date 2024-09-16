@@ -4,14 +4,17 @@ import economy from '../../assets/economia.png';
 import sustainable from '../../assets/sustentavel.png';
 import ProductList from '../../components/product/productList/ProductList';
 import { ServiceCard } from '../../components/serviceCard/ServiceCard';
+import SimpleCarousel from '../../components/carrosel/SimpleCarousel';
+
 
 export function Home() {
   return (
     <div>
-      <div
-        className="bg-cover h-[500px]"
-        style={{ backgroundImage: `url(${backgroundImage})` }}
-      />
+       <div>
+      <SimpleCarousel/>
+    </div>
+
+      
       <div className="flex flex-col mt-32">
         <h1 className="text-6xl text-center font-semibold mb-24">
           Conheça os benefícios da <h1 className="text-[#ffde59]">Energia Solar</h1>
@@ -42,15 +45,7 @@ export function Home() {
           <ProductList />
         </div>
 
-        {/* <div className="max-w-7xl mx-auto">
-          <h2 className="text-left text-3xl font-bold">Destaques Sale</h2>
-          <div className="grid grid-cols-4 gap-8 mt-8">
-            <CardProduct />
-            <CardProduct />
-            <CardProduct />
-            <CardProduct />
-          </div>
-        </div> */}
+        
       </div>
     </div>
   );
