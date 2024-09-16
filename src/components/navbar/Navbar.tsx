@@ -73,6 +73,7 @@ function Navbar() {
           <div className="hidden md:flex items-center gap-8">
             <Link to="/product" className="hover:text-[#FFDE59]">Produtos</Link>
             <Link to="/registerProduct" className="hover:text-[#FFDE59]">Cadastrar Produto</Link>
+            <Link to="/admin-dashboard" className="hover:text-[#FFDE59]">Admin</Link>
             <Link to="/registerCategory" className="hover:text-[#FFDE59]">Cadastrar Categoria</Link>
             <Link to="/shopping" className="hover:text-[#FFDE59]">
               <ShoppingCart size={24} className="text-white cursor-pointer hover:text-[#FFDE59]" />

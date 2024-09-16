@@ -48,7 +48,7 @@ function ProductList() {
           </div>
         </div>
       )}
-      <div className="container mx-auto my-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="container mx-auto my-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 flex flex-wrap">
         {products.map((product) => (
           <CardProduct key={product.id} product={product} />
         ))}

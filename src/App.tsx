@@ -18,7 +18,7 @@ import ProductForm from './components/product/productForm/ProductForm';
 import Profille from './pages/profille/Profille';
 import { Home } from './pages/home/Home';
 import ShoppingCart from './pages/shoppingCart/ShoppingCart';
-
+import { AdminDashboard } from './pages/admin/AdminDashboard';
 function App() {
   return (
     <>
@@ -41,6 +41,7 @@ function App() {
               <Route path="/editProduct/:id" element={<ProductForm />} />
               <Route path="/user" element={<Profille />} />
               <Route path="/shopping" element={<ShoppingCart />} />
+              <Route path="/admin-dashboard" element={<AdminDashboard />} />
             </Routes>
           </div>
           <Footer />
