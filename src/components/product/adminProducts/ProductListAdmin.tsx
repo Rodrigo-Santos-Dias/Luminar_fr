@@ -1,12 +1,12 @@
-import { useState, useEffect, useContext } from 'react';
-import { find } from '../../../services/Services';
-import { toastAlert } from '../../../util/toastAlert';
-import CardProduct from '../productCard/productCard';
-import Products from '../../../models/Products';
-import { AuthContext } from '../../../contexts/AuthContext';
+import { useState, useContext, useEffect } from "react";
+import { AuthContext } from "../../../contexts/AuthContext";
+import Products from "../../../models/Products";
+import { find } from "../../../services/Services";
+import { toastAlert } from "../../../util/toastAlert";
+import ProductCardAdmin from "./ProductCardAdmin";
 
-function ProductList() {
-  const [products, setProducts] = useState<Products[]>([]);
+function ProductListAdmin(){
+    const [products, setProducts] = useState<Products[]>([]);
 
   
 
@@ -49,11 +49,10 @@ function ProductList() {
       )}
       <div className="container mx-auto my-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 flex flex-wrap">
         {products.map((product) => (
-          <CardProduct key={product.id} product={product} />
+          <ProductCardAdmin key={product.id} product={product} />
         ))}
       </div>
     </>
   );
-}
-
-export default ProductList;
+} 
+export default ProductListAdmin

@@ -12,14 +12,8 @@ interface CardProductProps {
     return (
       <div className="flex flex-col sm:grid-cols-2">
       <div className="flex  w-[300px] h-[400px] bg-[#ece9e9] relative">
-        <img src={product.image}  className="w-full h-[250px] object-cover" />
+        <img src={product.image}  className="w-full h-[343px] object-cover" />
         <button className="bg-[#F9C23C]  hover:bg-[#ffde59] absolute bottom-0 w-[300px] p-4">Comprar</button>
-        <Link to={`/editProduct/${product.id}`} className='w-full text-black bg-[#FFDE59] mt-[300px] h-[50px] hover:bg-[#F9C23C] flex items-center justify-center py-2 transition-colors duration-300'>
-              <button>Edit</button>
-      </Link>
-      <Link to={`/deleteProduct/${product.id}`} className='text-white bg-red-400 h-[50px] mt-[300px] hover:bg-red-700 w-full flex items-center justify-center'>
-            <button>Delete</button>
-          </Link>
       </div>
       <div className='flex  mt-0 gap-[50px]'>
         <p className="font-semibold">{product.name}</p>
