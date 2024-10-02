@@ -5,9 +5,9 @@ export default interface Products {
   id: number;
   name: string;
   description: string;
-  quantity:number;
-  price:number;
-  image: string;
+  quantity: number;
+  price: number;
+  image: string;  
   category: Category | null;
   user: User | null;
 }

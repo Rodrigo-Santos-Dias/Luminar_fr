@@ -19,11 +19,14 @@ import Profille from './pages/profille/Profille';
 import { Home } from './pages/home/Home';
 import ShoppingCart from './pages/shoppingCart/ShoppingCart';
 import { AdminDashboard } from './pages/admin/AdminDashboard';
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 function App() {
   return (
     <>
       <AuthProvider>
         <BrowserRouter>
+        <ToastContainer />
           <Navbar />
           <div className="min-h-[80vh] bg-white">
             <Routes>

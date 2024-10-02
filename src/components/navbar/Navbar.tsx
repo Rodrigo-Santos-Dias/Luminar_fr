@@ -3,6 +3,7 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import logo from '../../assets/logo.png';
 import { MagnifyingGlass, ShoppingCart } from '@phosphor-icons/react';
+import { toastAlert } from '../../util/toastAlert';
 
 
 
@@ -14,7 +15,7 @@ function Navbar() {
 
   function logout() {
     handleLogout();
-    alert('User successfully logged out');
+    toastAlert('Até logo','sucessLogout');
     navigate('/login');
   }
 
@@ -49,7 +50,6 @@ function Navbar() {
             </div>
           </div>
 
-          {/* Ícone do menu hambúrguer para telas pequenas */}
           <div className="md:hidden">
             <button onClick={toggleSidebar}>
               <svg
@@ -75,7 +75,7 @@ function Navbar() {
             <Link to="/registerProduct" className="hover:text-[#FFDE59]">Cadastrar Produto</Link>
             <Link to="/admin-dashboard" className="hover:text-[#FFDE59]">Admin</Link>
             <Link to="/registerCategory" className="hover:text-[#FFDE59]">Cadastrar Categoria</Link>
-            <Link to="/shopping" className="hover:text-[#FFDE59]">
+            <Link to="/shopping/{null}" className="hover:text-[#FFDE59]">
               <ShoppingCart size={24} className="text-white cursor-pointer hover:text-[#FFDE59]" />
             </Link>
             <Link to="" onClick={logout} className="hover:text-[#FFDE59]">Logout</Link>
@@ -102,7 +102,7 @@ function Navbar() {
           </button>
         </div>
         <nav className="flex flex-col p-4">
-          <Link to="/product" className="hover:text-[#FFDE59] py-2" onClick={closeSidebar}>Products</Link>
+          <Link to="/product" className="hover:text-[#FFDE59] py-2" onClick={closeSidebar}>Produtos</Link>
           <Link to="/registerProduct" className="hover:text-[#FFDE59] py-2" onClick={closeSidebar}>Cadastrar Produto</Link>
           <Link to="/registerCategory" className="hover:text-[#FFDE59] py-2" onClick={closeSidebar}>Cadastrar Categoria</Link>
           <Link to="/shopping" className="hover:text-[#FFDE59] py-2" onClick={closeSidebar}>

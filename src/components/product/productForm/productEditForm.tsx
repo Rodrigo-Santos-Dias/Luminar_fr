@@ -27,7 +27,7 @@ function ProductForm() {
     id: 0,
     name: '',
     description: '',
-    image: '',
+    image:'',
     price: 0,
     quantity: 0,
     user: null,
@@ -104,14 +104,14 @@ function ProductForm() {
             Authorization: token,
           },
         });
-        toastAlert('Produto atualizado com sucesso', 'sucesso');
+        toastAlert('Produto atualizado com sucesso', 'sucess');
         goBack();
       } catch (error: any) {
         if (error.toString().includes('403')) {
           toastAlert('O token expirou, favor logar novamente', 'info');
           handleLogout();
         } else {
-          toastAlert('Erro ao atualizar o Produto', 'erro');
+          toastAlert('Erro ao atualizar o Produto', 'error');
         }
       }
     } else {
@@ -122,14 +122,14 @@ function ProductForm() {
           },
         });
 
-        toastAlert('Produto cadastrado com sucesso', 'sucesso');
+        toastAlert('Produto cadastrado com sucesso', 'sucess');
         goBack();
       } catch (error: any) {
         if (error.toString().includes('403')) {
           toastAlert('O token expirou, favor logar novamente', 'info');
           handleLogout();
         } else {
-          toastAlert('Erro ao cadastrar o Produto', 'erro');
+          toastAlert('Erro ao cadastrar o Produto', 'error');
         }
       }
     }

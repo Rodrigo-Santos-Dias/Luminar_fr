@@ -5,6 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { register,update,find } from '../../../services/Services';
 import Categories from '../../../models/Categories';
 import { AuthContext } from '../../../contexts/AuthContext';
+import { toastAlert } from '../../../util/toastAlert';
 
 
 function CategoryForm() {
@@ -68,15 +69,15 @@ function CategoryForm() {
         }
       )
 
-        alert('Categoria atualizada com sucesso!')
+        toastAlert('Categoria atualizada com sucesso!','sucess')
         goBack()
 
       } catch (error: any) {
         if (error.toString().includes('403')) {
-          alert('Seu token expirou, por favor logue novamente!')
+          toastAlert('Seu token expirou, por favor logue novamente!','info')
           handleLogout()
         } else {
-          alert('Erro em categoria')
+          toastAlert('Erro em categoria','error')
         }
 
       }
@@ -91,14 +92,14 @@ function CategoryForm() {
          }
       )
 
-        alert('Categoria registrada novamente!')
+        toastAlert('Categoria registrada!','sucess')
 
       } catch (error: any) {
         if (error.toString().includes('403')) {
-          alert('Seu token expirou, por favor logue novamente!')
+          toastAlert('Seu token expirou, por favor logue novamente!','info')
           handleLogout()
         } else {
-          alert('Erro ao registrar uma categoria!')
+          toastAlert('Erro ao registrar uma categoria!','info')
         }
       }
     }
@@ -112,7 +113,7 @@ function CategoryForm() {
 
   useEffect(() => {
     if (token === '') {
-      alert('Você precisa estar logado!');
+      toastAlert('Você precisa estar logado!','info');
       navigate('/login');
     }
   }, [token]);

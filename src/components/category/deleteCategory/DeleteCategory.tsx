@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router'
 import Category from '../../../models/Categories'
 import { AuthContext } from '../../../contexts/AuthContext'
 import { find ,remove } from '../../../services/Services'
+import { toastAlert } from '../../../util/toastAlert'
 
 
 
@@ -26,7 +27,7 @@ function DeleteCategory() {
             })
         } catch (error: any) {
             if (error.toString().includes('403')) {
-                alert('The token has expired, please try again')
+                toastAlert('The token has expired, please try again','info')
                 handleLogout()
             }
         }
@@ -34,7 +35,7 @@ function DeleteCategory() {
 
     useEffect(() => {
         if (token === '') {
-            alert('You need to be logged')
+            toastAlert('You need to be logged','info')
             navigate('/login')
         }
     }, [token])
@@ -57,10 +58,10 @@ function DeleteCategory() {
                 }
             })
 
-            alert('Category deleted successfully')
+            toastAlert('Categoria excluída com sucesso','sucess')
 
         } catch (error) {
-            alert('Error when deleting the Category')
+            toastAlert('Erro ao tentar excluir categoria','error')
         }
 
         hollBack()

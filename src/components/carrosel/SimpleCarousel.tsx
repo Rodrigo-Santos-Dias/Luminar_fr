@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react';
 import image1 from '../../assets/bela-usina-de-energia.jpg';
-import image4 from '../../assets/luminar-background.png';
 import image2 from '../../assets/projeto-de-paineis-solares-3d.jpg';
+import image3 from '../../assets/projetoSocialEnerniaSolar.jpg';
+import image4 from '../../assets/projeto-carioca-energia-solar-favelas-finalista-premio-global-onu-3-conexao-planeta.jpg';
+import image5 from '../../assets/projetoSocialEnerniaSolar1.jpg';
 
 
-const images = [image1,image2,image4];
+
+
+const images = [image1,image2,image4,image3, image5];
 
 const SimpleCarousel = () => {
 

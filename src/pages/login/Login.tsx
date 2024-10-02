@@ -1,6 +1,5 @@
 import  { ChangeEvent, useContext, useEffect, useState } from 'react';
 import './Login.css';
-import sideImage from '../../assets/sideImage.png';
 import logo from '../../assets/logo.png'
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -109,7 +108,7 @@ function login(e: ChangeEvent<HTMLFormElement>) {
 
   
   <div className="relative w-full h-screen overflow-hidden hidden lg:block">
-    <img src={sideImage} alt="Side Image" className="w-full h-full" />
+    <img src={logo} alt="Side Image" className="w-full h-full" />
   </div>
 </div>
 
